@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './sass/search_movies.scss'
+import MovieCard from "./MovieCard";
 
 const SearchMovies = () => {
 
@@ -41,20 +42,7 @@ const SearchMovies = () => {
             </form>
             <div className="card-list">
                 { movies.filter(movie => movie.poster_path).map(movie => (
-                    <div className="card" key={movie.id}>
-                        <img
-                            src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
-                            alt=""
-                        />
-
-                        <div className="content">
-                            <h3 className="title">{movie.title}</h3>
-                            <p><small>Release Date: {movie.release_date}</small></p>
-                            <p><small>Rating: {movie.vote_average}</small></p>
-                            <p className="desc">{movie.overview}</p>
-                        </div>
-
-                    </div>
+                    <MovieCard key={movie.id} movie={movie} />
                 )) }
             </div>
         </div>
