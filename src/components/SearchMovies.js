@@ -4,6 +4,7 @@ import './sass/search_movies.scss'
 const SearchMovies = () => {
 
     const [query, setQuery] = useState('')
+    const [movies, setMovies] = useState([])
 
     const handleChange = (e) => {
         setQuery(e.target.value)
@@ -18,7 +19,7 @@ const SearchMovies = () => {
         try {
             const res = await fetch(url)
             const data = await res.json()
-            console.log(data)
+            setMovies(data.results)
         } catch (err) {
             console.error(err)
         }
